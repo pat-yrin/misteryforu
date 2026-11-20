@@ -1,0 +1,79 @@
+:root{--b:#6d1a2b;--n:#14213d;--k:#0e0b0c;--c:#3b2418;--p:#f4c6d0;--i:#f3ead6;--g:#c9a86a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:radial-gradient(circle at 50% 0,#4a2248,var(--k) 75%);color:var(--i);font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;min-height:100vh}
+h1,h2{font-family:'Playfair Display',Georgia,serif;margin:0}
+header{text-align:center;padding:18px 12px 8px}
+h1{color:var(--g);font-size:clamp(26px,7vw,40px);letter-spacing:.04em}
+header p{margin:4px 0 10px;color:var(--p);font-style:italic}
+button{font:inherit;font-weight:700;cursor:pointer;border:1px solid var(--g);background:var(--b);color:var(--i);padding:8px 14px;border-radius:6px}
+button:hover{background:#8a2238}
+.bar{display:flex;gap:10px;justify-content:center;align-items:center}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:12px;margin:10px auto 30px;max-width:560px;width:calc(100% - 20px);background:linear-gradient(135deg,#4a1220,var(--b));border:3px solid var(--g);outline:3px solid var(--k);outline-offset:-9px;border-radius:6px;box-shadow:0 0 0 6px #1b0f0a,0 20px 50px #000a}
+.tile{position:relative;aspect-ratio:1;overflow:hidden;border:2px solid var(--g);border-radius:4px;padding:0;background:var(--c)}
+.tile svg{width:100%;height:100%;display:block}
+.tile .nm{position:absolute;inset:auto 0 0;background:linear-gradient(transparent,#000d);font-size:12px;padding:12px 3px 3px;text-align:center;color:var(--i)}
+.tile .no{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--b);border:1px solid var(--g);font:700 12px/18px 'Playfair Display',serif;text-align:center}
+.tile.lk svg{filter:grayscale(1) brightness(.3)}.tile.lk{cursor:not-allowed}
+.tile.lk::after{content:"🔒";position:absolute;inset:0;display:grid;place-items:center;font-size:26px}
+.tile.ok::after{content:"✓";position:absolute;top:3px;right:3px;color:var(--k);background:var(--g);width:18px;height:18px;border-radius:50%;font:800 12px/18px sans-serif;text-align:center}
+.tile.op{animation:gl 2s infinite}@keyframes gl{50%{box-shadow:0 0 14px 3px var(--p)}}
+.ctr{grid-area:2/2;background:var(--i);color:var(--b);border:2px solid var(--g);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px;font-weight:700;font-size:12px;line-height:1.1;gap:3px}
+.ctr b{font-family:'Playfair Display',serif;font-size:13px}.ctr button{font-size:11px;padding:3px 6px}
+.md{position:fixed;inset:0;background:#000c;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:12px;z-index:9}.md[hidden]{display:none}
+.pn{background:var(--i);color:var(--c);max-width:540px;width:100%;border:3px solid var(--g);border-radius:8px;padding:0 0 14px;margin:auto;box-shadow:0 0 0 5px var(--k)}
+.pn svg{width:100%;display:block;border-bottom:3px solid var(--g)}
+.pn .in{padding:10px 16px}.pn h2{color:var(--b);font-size:24px}
+.pn small{color:var(--n);font-weight:700;letter-spacing:.1em}
+.q{white-space:pre-line;background:#e7dcc2;border-left:4px solid var(--b);padding:8px 10px;margin:8px 0}
+input{font:inherit;padding:8px;border:2px solid var(--n);border-radius:6px;width:100%;margin:6px 0;background:#fffaf0;color:var(--k)}
+.row{display:flex;gap:8px;flex-wrap:wrap}.row button{flex:1}.x{background:var(--n)}
+.msg{min-height:22px;font-weight:700;color:var(--b)}
+.cl{background:var(--p);border:2px dashed var(--b);padding:8px 10px;margin:8px 0;border-radius:4px;white-space:pre-line}
+.lb{cursor:pointer}.lb.f{filter:drop-shadow(0 0 3px #ffd36a)}
+
+/* ===== Escritorio de detective (fondo con detalles) ===== */
+body{position:relative;overflow-x:hidden;background:radial-gradient(ellipse at 50% 18%,#6d1a2b55,transparent 65%),repeating-linear-gradient(90deg,#0003 0 2px,transparent 2px 52px),repeating-linear-gradient(90deg,#ffffff08 0 1px,transparent 1px 13px),linear-gradient(#3d2418,#26150e 55%,#140a08)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:2;background:radial-gradient(ellipse at center,transparent 55%,#000b 100%)}
+#desk{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+header,main,#mesa{position:relative;z-index:1}
+main{max-width:580px;margin:0 auto}
+.dk{position:absolute;filter:drop-shadow(3px 6px 5px #000a);pointer-events:none}
+.dk.top{z-index:3}
+.w{display:none}
+@media(min-width:800px){.w{display:block}}
+#mesa{height:310px;max-width:640px;margin:0 auto 20px}
+header .dk{opacity:.95}
+html{overflow-x:hidden}
+
+/* ===== Libro del cuento ===== */
+.bkw{background:radial-gradient(circle at 50% 0,#6d1a2b,#3a0f1c);color:var(--i);padding:16px 12px 30px;margin-bottom:-14px;border-radius:5px;text-align:center}
+.book{margin:auto;perspective:1700px;border:6px solid #2a0d12;outline:2px solid var(--g);border-radius:6px;box-shadow:0 12px 30px #000a;background:#2a0d12}
+.bk{position:relative;transform-style:preserve-3d;text-align:left}
+.pg,.meas{box-sizing:border-box;padding:24px 26px 36px;font:19px/1.5 'Cormorant Garamond',Georgia,serif;color:#3b2418}
+.pg{position:absolute;inset:0;overflow:hidden;background:linear-gradient(90deg,#0000001f 0,transparent 7%),radial-gradient(circle at 70% 20%,#fff8,transparent 60%),#f6ecd6}
+.pg p,.meas p{margin:0 0 .65em;text-align:justify;hyphens:auto}
+.under::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#0004,transparent 22%);pointer-events:none}
+.top{z-index:2;transform-origin:left center;transition:transform .75s cubic-bezier(.4,.1,.3,1);backface-visibility:hidden;box-shadow:4px 0 14px #0005}
+.top.turn{transform:rotateY(-172deg)}
+.ph{font:700 11px 'Playfair Display',Georgia,serif;letter-spacing:.22em;color:#8a1f36;text-align:center;margin-bottom:12px}
+.pn2{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:14px;color:#8a5a36}
+.cv{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+.cv h2{font-size:34px;color:#6d1a2b}.cv i{font-size:20px}.cv small{color:#8a5a36;font-size:14px}.orn{font-size:30px;color:#c9a86a}
+.rib{position:absolute;top:-8px;right:22px;width:16px;height:58px;background:linear-gradient(#f4a8bc,#e48aa4);clip-path:polygon(0 0,100% 0,100% 100%,50% 84%,0 100%);z-index:5;pointer-events:none}
+.bn{align-items:center;justify-content:center;margin:10px 0 8px}.bn button{flex:0 0 56px}#pi{min-width:70px;text-align:center}
+
+.in>p{white-space:pre-line}
+
+/* ===== Crucigrama, rompecabezas y reloj ===== */
+.cwg{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));width:100%;box-sizing:border-box;border:2px solid #0e0b0c;background:#0e0b0c;margin:8px 0}
+.cb{aspect-ratio:1;background:#0e0b0c}
+.cw{aspect-ratio:1;position:relative;background:#fffaf0;border:1px solid #3b2418;box-sizing:border-box}
+.cw i{position:absolute;top:0;left:1px;font:700 7px/1 Georgia,serif;color:#6d1a2b;font-style:normal;pointer-events:none}
+.cw input{min-width:0;width:100%;height:100%;padding:0;margin:0;border:0;border-radius:0;background:transparent;text-align:center;font:700 15px Georgia,serif;color:#14213d;text-transform:uppercase;outline:none}
+.cw.hl{background:#f4c6d0}.cw.cur{background:#e88aa8}
+.cwc{font-size:15px;line-height:1.35;margin:8px 0}.cwc>b{display:block;color:#6d1a2b;margin-top:6px;letter-spacing:.1em;text-transform:uppercase;font-size:12px}.cwc div{margin:4px 0;padding:2px 4px;border-radius:3px}.cwc .on{background:#f4c6d0}
+.pz{position:relative;width:min(100%,320px);aspect-ratio:4/5;margin:8px auto;border:3px solid #6d1a2b;background:#1d0f0a;border-radius:4px;touch-action:none;user-select:none}
+.pc{position:absolute;width:25%;height:20%;background-size:400% 500%;box-sizing:border-box;border:1px solid #14213d66;transition:left .2s,top .2s,rotate .2s;cursor:grab;touch-action:none}
+#reloj{display:flex;gap:12px;align-items:center;justify-content:center;max-width:360px;margin:12px auto 0;padding:8px 14px;background:#14213dcc;border:2px solid var(--g);border-radius:12px;text-align:left;box-shadow:0 6px 16px #000a}
+#reloj div{display:flex;flex-direction:column}#reloj small{font-size:11px;letter-spacing:.08em;color:var(--p)}#reloj b{font:800 26px 'Playfair Display',Georgia,serif;color:var(--g);letter-spacing:.06em}
+.tile .nm small{display:block;font-size:9px;opacity:.85}
